@@ -228,21 +228,15 @@ impl CacheManager {
 
         let incremental_dir = cache_dir.join("incremental");
         let metadata_dir = cache_dir.join("metadata");
-        let artifacts_dir = cache_dir.join("artifacts");
 
         fs::create_dir_all(&cache_dir)?;
         fs::create_dir_all(&incremental_dir)?;
         fs::create_dir_all(&metadata_dir)?;
-        fs::create_dir_all(&artifacts_dir)?;
-
-        // Verify artifacts_dir is accessible (used for future distributed caching)
-        let _ = &artifacts_dir;
 
         Ok(Self {
             cache_dir,
             incremental_dir,
             metadata_dir,
-            artifacts_dir,
         })
     }
 

@@ -1,1 +1,1 @@
-/home/ubuntu/cargo-cache/target/debug/cargo-save: /home/ubuntu/cargo-cache/src/main.rs
+/home/ubuntu/cargo-save/target/debug/cargo-save: /home/ubuntu/cargo-save/src/main.rs
