@@ -33,6 +33,9 @@ target/doc/
 # Custom cargo-save cache location (if used in project)
 .cargo-save-cache/
 
+# Build logs directory
+build-logs/
+
 # Backup files
 *.backup
 *.bak

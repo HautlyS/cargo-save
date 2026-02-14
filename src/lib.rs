@@ -1575,6 +1575,16 @@ impl CacheManager {
         let duration = start_time.elapsed().as_millis() as u64;
         let build_success = exit_code == Some(0);
 
+        // Copy log to workspace build-logs/ directory
+        if let Ok(workspace_root) = workspace_state.root.canonicalize() {
+            let build_logs_dir = workspace_root.join("build-logs");
+            if let Ok(()) = fs::create_dir_all(&build_logs_dir) {
+                let timestamp = chrono::Local::now().format("%Y%m%d_%H%M%S");
+                let log_copy = build_logs_dir.join(format!("{}_{}.txt", timestamp, subcommand));
+                let _ = fs::copy(&log_file, &log_copy);
+            }
+        }
+
         // Save build metadata
         let build_cache = BuildCache {
             cache_id: cache_id.clone(),
